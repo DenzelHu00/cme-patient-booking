@@ -1,0 +1,65 @@
+@import "tailwindcss";
+
+@theme {
+  --color-sfu-red: #cc0633;
+  --color-sfu-maroon: #a6192e;
+  --color-sfu-dark: #2a1218;
+  --color-ink: #211c1d;
+  --color-cream: #faf7f3;
+  --color-sand: #f1ebe3;
+  --font-display: "Fraunces", Georgia, "Times New Roman", serif;
+  --font-sans: "Inter", ui-sans-serif, system-ui, -apple-system, sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-sans);
+  color: var(--color-ink);
+  background-color: var(--color-cream);
+  -webkit-font-smoothing: antialiased;
+}
+
+.font-display {
+  font-family: var(--font-display);
+}
+
+.hero-glow {
+  background:
+    radial-gradient(900px 480px at 12% -10%, rgba(204, 6, 51, 0.1), transparent 60%),
+    radial-gradient(700px 420px at 95% 0%, rgba(166, 25, 46, 0.12), transparent 55%),
+    linear-gradient(180deg, #fdfbf8 0%, var(--color-cream) 100%);
+}
+
+.card {
+  @apply rounded-2xl border border-sand bg-white shadow-[0_1px_2px_rgba(33,28,29,0.04),0_12px_32px_-16px_rgba(33,28,29,0.12)];
+}
+
+.btn-primary {
+  @apply inline-flex items-center justify-center gap-2 rounded-full bg-sfu-red px-6 py-3 text-sm font-semibold text-white transition hover:bg-sfu-maroon focus:outline-none focus-visible:ring-2 focus-visible:ring-sfu-red focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50;
+}
+
+.btn-secondary {
+  @apply inline-flex items-center justify-center gap-2 rounded-full border border-ink/15 bg-white px-6 py-3 text-sm font-semibold text-ink transition hover:border-ink/30 hover:bg-sand/60 focus:outline-none focus-visible:ring-2 focus-visible:ring-ink/30 focus-visible:ring-offset-2;
+}
+
+.input {
+  @apply w-full rounded-xl border border-ink/15 bg-white px-4 py-3 text-sm text-ink placeholder:text-ink/35 transition focus:border-sfu-red focus:outline-none focus:ring-2 focus:ring-sfu-red/20;
+}
+
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-up {
+  animation: fade-up 0.45s ease both;
+}
