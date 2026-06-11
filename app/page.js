@@ -46,8 +46,8 @@ const expectations = [
     body: "Magnetoencephalography (MEG) passively records the magnetic fields naturally produced by your brain. Nothing enters your body — you simply sit comfortably while we record.",
   },
   {
-    title: "About 90 minutes",
-    body: "Plan for roughly 1.5 hours including preparation, the recording session, and a short debrief with the research team.",
+    title: "About 180 minutes",
+    body: "Plan for roughly 3 hours including preparation, the recording session, and a short debrief with the research team.",
   },
   {
     title: "Arrive metal-free",
