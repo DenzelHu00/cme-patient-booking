@@ -38,7 +38,7 @@ export default function AdminPage() {
       method,
       headers: {
         "Content-Type": "application/json",
-        "x-admin-password": password,
+        "x-admin-password": encodeURIComponent(password),
       },
       body: body ? JSON.stringify(body) : undefined,
       cache: "no-store",
@@ -49,7 +49,7 @@ export default function AdminPage() {
 
   async function refresh(pw) {
     const res = await fetch("/api/admin", {
-      headers: { "x-admin-password": pw },
+      headers: { "x-admin-password": encodeURIComponent(pw) },
       cache: "no-store",
     });
     if (res.status === 401) return false;
