@@ -46,7 +46,7 @@ const expectations = [
     body: "Magnetoencephalography (MEG) passively records the magnetic fields naturally produced by your brain. Nothing enters your body — you simply sit comfortably while we record.",
   },
   {
-    title: "About 180 minutes",
+    title: "About three hours",
     body: "Plan for roughly 3 hours including preparation, the recording session, and a short debrief with the research team.",
   },
   {
@@ -124,8 +124,7 @@ export default function HomePage() {
               outcomes for people living with epilepsy.
             </p>
             <p className="mt-4 leading-relaxed text-ink/70">
-              Sessions take place at the Centre for Advanced Imaging on SFU&rsquo;s
-              Burnaby campus, using one of Canada&rsquo;s most advanced MEG systems.
+              Sessions take place at SFU&rsquo;s Centre for Advanced Imaging at Surrey Memorial Hospital, using one of Canada&rsquo;s most advanced MEG systems.
             </p>
             <div className="mt-8 flex flex-wrap gap-2">
               {["Non-invasive", "No radiation", "Silent scan", "REB approved"].map(
