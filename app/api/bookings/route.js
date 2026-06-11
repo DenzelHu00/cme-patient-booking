@@ -24,7 +24,7 @@ export async function POST(request) {
     );
   }
 
-  const result = createBooking({
+  const result = await createBooking({
     slotId,
     name: name.trim().slice(0, 200),
     email: email.trim().slice(0, 200),

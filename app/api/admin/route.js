@@ -5,7 +5,7 @@ export const dynamic = "force-dynamic";
 
 export async function GET(request) {
   if (!isAuthorized(request)) return unauthorized();
-  return Response.json(getAllData());
+  return Response.json(await getAllData());
 }
 
 export async function POST(request) {
@@ -31,7 +31,7 @@ export async function POST(request) {
     );
   }
 
-  const added = addSlots(date, validTimes);
+  const added = await addSlots(date, validTimes);
   return Response.json({ added }, { status: 201 });
 }
 
@@ -47,12 +47,12 @@ export async function DELETE(request) {
 
   const { slotId, bookingId } = body || {};
   if (slotId) {
-    const result = deleteSlot(slotId);
+    const result = await deleteSlot(slotId);
     if (!result.ok) return Response.json({ error: result.error }, { status: 400 });
     return Response.json({ ok: true });
   }
   if (bookingId) {
-    const result = cancelBooking(bookingId);
+    const result = await cancelBooking(bookingId);
     if (!result.ok) return Response.json({ error: result.error }, { status: 400 });
     return Response.json({ ok: true });
   }

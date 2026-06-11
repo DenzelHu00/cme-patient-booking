@@ -3,5 +3,5 @@ import { getAvailableSlots } from "@/lib/db";
 export const dynamic = "force-dynamic";
 
 export async function GET() {
-  return Response.json({ slots: getAvailableSlots() });
+  return Response.json({ slots: await getAvailableSlots() });
 }
