@@ -70,7 +70,8 @@ export default function RootLayout({ children }) {
               </Link>
               <Link
                 href="/book"
-                className="rounded-full bg-sfu-red px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-sfu-maroon"
+                className="rounded-full bg-sfu-red px-5 py-2.5 text-sm font-semibold text-white active:scale-[0.97] hover:bg-sfu-maroon"
+                style={{ transition: "background-color 150ms ease, transform 100ms cubic-bezier(0.23, 1, 0.32, 1)" }}
               >
                 Book an Appointment
               </Link>

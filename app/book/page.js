@@ -56,7 +56,7 @@ function Calendar({ slotsByDate, selectedDate, onSelectDate, month, year, onNavi
               type="button"
               aria-label={label}
               onClick={() => onNavigate(dir)}
-              className="flex h-9 w-9 items-center justify-center rounded-full border border-ink/10 text-ink/60 transition hover:border-ink/25 hover:text-ink"
+              className="flex h-9 w-9 items-center justify-center rounded-full border border-ink/10 text-ink/60 transition active:scale-[0.97] hover:border-ink/25 hover:text-ink"
             >
               <svg viewBox="0 0 16 16" fill="none" className="h-4 w-4" aria-hidden="true">
                 <path d={path} stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
@@ -87,9 +87,9 @@ function Calendar({ slotsByDate, selectedDate, onSelectDate, month, year, onNavi
               className={[
                 "relative mx-auto flex h-11 w-11 flex-col items-center justify-center rounded-full text-sm transition",
                 isSelected
-                  ? "bg-sfu-red font-bold text-white shadow-md shadow-sfu-red/30"
+                  ? "bg-sfu-red font-bold text-white shadow-md shadow-sfu-red/30 active:scale-[0.97]"
                   : available
-                    ? "font-semibold text-sfu-maroon hover:bg-sfu-red/10"
+                    ? "font-semibold text-sfu-maroon hover:bg-sfu-red/10 active:scale-[0.97]"
                     : "text-ink/30",
                 isToday && !isSelected ? "ring-1 ring-ink/20" : "",
               ].join(" ")}
@@ -287,7 +287,7 @@ export default function BookPage() {
           </div>
 
           {loadError && (
-            <div role="alert" className="mt-8 rounded-xl border border-sfu-red/25 bg-sfu-red/5 px-5 py-4 text-sm font-medium text-sfu-maroon">
+            <div role="alert" className="animate-enter mt-8 rounded-xl border border-sfu-red/25 bg-sfu-red/5 px-5 py-4 text-sm font-medium text-sfu-maroon">
               {loadError}
             </div>
           )}
@@ -335,7 +335,7 @@ export default function BookPage() {
                   </p>
                 </div>
               ) : (
-                <div className="animate-fade-up" key={selectedDate}>
+                <div className="animate-panel-in" key={selectedDate}>
                   <p className="text-xs font-semibold uppercase tracking-[0.14em] text-sfu-red">
                     Choose a time
                   </p>
@@ -353,7 +353,7 @@ export default function BookPage() {
                             setSelectedSlot(slot);
                             setSubmitError("");
                           }}
-                          style={{ "--chip-delay": `${350 + index * 55}ms` }}
+                          style={{ "--chip-delay": `${60 + index * 45}ms` }}
                           className={[
                             "animate-chip-in rounded-full border px-5 py-2.5 text-sm font-semibold transition active:scale-[0.97]",
                             active
@@ -368,7 +368,7 @@ export default function BookPage() {
                   </div>
 
                   {selectedSlot && (
-                    <form onSubmit={submit} className="animate-fade-up mt-8 border-t border-sand pt-7">
+                    <form onSubmit={submit} className="animate-panel-in mt-8 border-t border-sand pt-7">
                       <p className="text-xs font-semibold uppercase tracking-[0.14em] text-sfu-red">
                         Your details
                       </p>
@@ -435,7 +435,7 @@ export default function BookPage() {
                       </div>
 
                       {submitError && (
-                        <p role="alert" className="mt-4 rounded-xl border border-sfu-red/25 bg-sfu-red/5 px-4 py-3 text-sm font-medium text-sfu-maroon">
+                        <p role="alert" className="animate-enter mt-4 rounded-xl border border-sfu-red/25 bg-sfu-red/5 px-4 py-3 text-sm font-medium text-sfu-maroon">
                           {submitError}
                         </p>
                       )}
