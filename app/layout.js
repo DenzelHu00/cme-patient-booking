@@ -1,8 +1,16 @@
+import { Outfit } from "next/font/google";
 import "./globals.css";
 import Link from "next/link";
 
+const outfit = Outfit({
+  subsets: ["latin"],
+  variable: "--font-outfit",
+  weight: ["400", "500", "600", "700"],
+  display: "swap",
+});
+
 export const metadata = {
-  title: "SFU Centre for Advanced Imaging — Patient Booking",
+  title: "SFU Centre for Advanced Imaging - Patient Booking",
   description:
     "Book your research appointment for the Clinical Magnetoencephalography for Epilepsy (CME) study at SFU's Centre for Advanced Imaging.",
 };
@@ -42,15 +50,7 @@ function Wordmark() {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en">
-      <head>
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        <link
-          href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&display=swap"
-          rel="stylesheet"
-        />
-      </head>
+    <html lang="en" className={outfit.variable}>
       <body className="flex min-h-screen flex-col">
         <header className="sticky top-0 z-40 border-b border-sand bg-cream/85 backdrop-blur">
           <div className="mx-auto flex h-[72px] w-full max-w-6xl items-center justify-between px-5">
@@ -83,8 +83,7 @@ export default function RootLayout({ children }) {
         <footer className="border-t border-sand bg-white">
           <div className="mx-auto flex w-full max-w-6xl flex-col gap-4 px-5 py-8 text-sm text-ink/60 sm:flex-row sm:items-center sm:justify-between">
             <p>
-              © {new Date().getFullYear()} SFU Centre for Advanced Imaging ·
-              Clinical Magnetoencephalography for Epilepsy (CME) Study
+              &copy; {new Date().getFullYear()} SFU Centre for Advanced Imaging. Clinical Magnetoencephalography for Epilepsy (CME) Study.
             </p>
             <div className="flex items-center gap-5">
               <span>Burnaby, British Columbia</span>
