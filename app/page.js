@@ -43,10 +43,11 @@ export default function HomePage() {
         <div className="mx-auto w-full max-w-6xl px-5 py-20 sm:py-28">
           <div className="grid items-center gap-12 lg:grid-cols-[1fr_400px]">
             <div>
-              <p className="animate-fade-up mb-5 inline-flex items-center rounded-full border border-sfu-red/20 bg-white px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.14em] text-sfu-maroon">
+              <p className="animate-fade-up mb-5 inline-flex items-center gap-2 rounded-full border border-sfu-red/20 bg-white px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.14em] text-sfu-maroon">
+                <span className="animate-status-dot h-1.5 w-1.5 rounded-full bg-sfu-red" />
                 Now enrolling participants
               </p>
-              <h1 className="font-display animate-fade-up text-4xl font-semibold leading-[1.1] text-ink [animation-delay:60ms] sm:text-5xl lg:text-6xl">
+              <h1 className="font-display animate-fade-up text-4xl font-semibold leading-[1.1] text-ink [animation-delay:60ms] [text-wrap:balance] sm:text-5xl lg:text-6xl">
                 Your brain,<br className="hidden sm:block" /> beautifully mapped.
               </h1>
               <p className="animate-fade-up mt-6 max-w-xl text-lg leading-relaxed text-ink/70 [animation-delay:120ms]">
@@ -97,7 +98,7 @@ export default function HomePage() {
       <section id="study" className="mx-auto w-full max-w-6xl px-5 py-20">
         <div className="grid items-start gap-10 lg:grid-cols-[1.1fr_1fr]">
           <div className="reveal">
-            <h2 className="font-display text-3xl font-semibold text-ink sm:text-4xl">
+            <h2 className="font-display text-3xl font-semibold text-ink [text-wrap:balance] sm:text-4xl">
               Clinical Magnetoencephalography for Epilepsy
             </h2>
             <p className="mt-5 leading-relaxed text-ink/70">
@@ -155,10 +156,7 @@ export default function HomePage() {
       <section id="expect" className="border-t border-sand bg-white">
         <div className="mx-auto w-full max-w-6xl px-5 py-20">
           <div className="reveal max-w-2xl">
-            <p className="text-xs font-semibold uppercase tracking-[0.18em] text-sfu-red">
-              Preparing for your visit
-            </p>
-            <h2 className="font-display mt-3 text-3xl font-semibold text-ink sm:text-4xl">
+            <h2 className="font-display text-3xl font-semibold text-ink [text-wrap:balance] sm:text-4xl">
               What to expect on the day
             </h2>
           </div>

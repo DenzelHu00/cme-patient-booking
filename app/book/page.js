@@ -68,7 +68,7 @@ function Calendar({ slotsByDate, selectedDate, onSelectDate, month, year, onNavi
 
       <div className="mt-5 grid grid-cols-7 gap-1 text-center">
         {WEEKDAYS.map((w) => (
-          <div key={w} className="pb-2 text-xs font-semibold uppercase tracking-wide text-ink/40">
+          <div key={w} className="pb-2 text-xs font-semibold uppercase tracking-wide text-ink/55">
             {w}
           </div>
         ))}
@@ -118,9 +118,9 @@ function Calendar({ slotsByDate, selectedDate, onSelectDate, month, year, onNavi
 function Confirmation({ booking, onBookAnother }) {
   return (
     <div className="card animate-fade-up mx-auto max-w-xl p-10 text-center">
-      <span className="mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-green-100">
-        <svg viewBox="0 0 24 24" fill="none" className="h-8 w-8 text-green-700" aria-hidden="true">
-          <path d="m5 12.5 4.5 4.5L19 7.5" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" />
+      <span className="animate-icon-pop mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-sfu-red/10 ring-1 ring-sfu-red/20">
+        <svg viewBox="0 0 24 24" fill="none" className="h-8 w-8 text-sfu-maroon" aria-hidden="true">
+          <path d="m5 12.5 4.5 4.5L19 7.5" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" className="check-path" />
         </svg>
       </span>
       <h2 className="font-display mt-6 text-2xl font-semibold text-ink">
@@ -147,7 +147,7 @@ function Confirmation({ booking, onBookAnother }) {
           </div>
           <div>
             <p className="text-xs font-semibold uppercase tracking-wide text-ink/45">Location</p>
-            <p className="mt-1 font-semibold text-ink">Centre for Advanced Imaging, SFU Burnaby</p>
+            <p className="mt-1 font-semibold text-ink">Centre for Advanced Imaging, Surrey Memorial Hospital</p>
           </div>
         </div>
       </div>
@@ -281,13 +281,13 @@ export default function BookPage() {
             </h1>
             <p className="mt-3 leading-relaxed text-ink/65">
               Select a highlighted date to see available times. Appointments
-              take place at the Centre for Advanced Imaging on SFU&rsquo;s Burnaby
-              campus.
+              take place at SFU&rsquo;s Centre for Advanced Imaging at Surrey
+              Memorial Hospital.
             </p>
           </div>
 
           {loadError && (
-            <div className="mt-8 rounded-xl border border-sfu-red/25 bg-sfu-red/5 px-5 py-4 text-sm font-medium text-sfu-maroon">
+            <div role="alert" className="mt-8 rounded-xl border border-sfu-red/25 bg-sfu-red/5 px-5 py-4 text-sm font-medium text-sfu-maroon">
               {loadError}
             </div>
           )}
@@ -330,7 +330,7 @@ export default function BookPage() {
                     </svg>
                   </span>
                   <p className="mt-4 font-semibold text-ink">Pick a date to begin</p>
-                  <p className="mt-1.5 max-w-60 text-sm text-ink/50">
+                  <p className="mt-1.5 max-w-60 text-sm text-ink/65">
                     Dates marked with a red dot have appointment times available.
                   </p>
                 </div>
@@ -343,7 +343,7 @@ export default function BookPage() {
                     {formatLongDate(selectedDate)}
                   </h2>
                   <div className="mt-5 flex flex-wrap gap-2.5">
-                    {dayTimes.map((slot) => {
+                    {dayTimes.map((slot, index) => {
                       const active = selectedSlot?.id === slot.id;
                       return (
                         <button
@@ -353,8 +353,9 @@ export default function BookPage() {
                             setSelectedSlot(slot);
                             setSubmitError("");
                           }}
+                          style={{ "--chip-delay": `${350 + index * 55}ms` }}
                           className={[
-                            "rounded-full border px-5 py-2.5 text-sm font-semibold transition",
+                            "animate-chip-in rounded-full border px-5 py-2.5 text-sm font-semibold transition active:scale-[0.97]",
                             active
                               ? "border-sfu-red bg-sfu-red text-white shadow-md shadow-sfu-red/25"
                               : "border-ink/15 bg-white text-ink hover:border-sfu-red/50 hover:text-sfu-maroon",
@@ -434,7 +435,7 @@ export default function BookPage() {
                       </div>
 
                       {submitError && (
-                        <p className="mt-4 rounded-xl border border-sfu-red/25 bg-sfu-red/5 px-4 py-3 text-sm font-medium text-sfu-maroon">
+                        <p role="alert" className="mt-4 rounded-xl border border-sfu-red/25 bg-sfu-red/5 px-4 py-3 text-sm font-medium text-sfu-maroon">
                           {submitError}
                         </p>
                       )}

@@ -159,7 +159,7 @@ export default function AdminPage() {
           <h1 className="font-display mt-2 text-2xl font-semibold text-ink">
             Research team sign in
           </h1>
-          <p className="mt-2 text-sm text-ink/55">
+          <p className="mt-2 text-sm text-ink/65">
             Enter the coordinator password to manage CME study appointment dates.
           </p>
           <form onSubmit={login} className="mt-6">
@@ -225,6 +225,8 @@ export default function AdminPage() {
 
       {message && (
         <div
+          role="status"
+          aria-live="polite"
           className={[
             "animate-fade-up mt-6 rounded-xl border px-5 py-3.5 text-sm font-medium",
             message.type === "ok"
@@ -242,7 +244,7 @@ export default function AdminPage() {
           <h2 className="font-display text-lg font-semibold text-ink">
             Release appointment dates
           </h2>
-          <p className="mt-1.5 text-sm text-ink/55">
+          <p className="mt-1.5 text-sm text-ink/65">
             Pick a date and the times patients can book.
           </p>
 
@@ -414,7 +416,7 @@ export default function AdminPage() {
                       {formatLongDate(b.date)}
                       <div className="text-ink/50">{formatTime(b.time)}</div>
                     </td>
-                    <td className="max-w-56 py-3.5 pr-4 text-ink/60">{b.notes || "—"}</td>
+                    <td className="max-w-56 py-3.5 pr-4 text-ink/60">{b.notes || "-"}</td>
                     <td className="py-3.5 text-right">
                       <button
                         type="button"

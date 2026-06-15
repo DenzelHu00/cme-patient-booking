@@ -29,7 +29,7 @@ body {
 .hero-glow {
   background:
     radial-gradient(600px 320px at 8% -5%, rgba(204, 6, 51, 0.07), transparent 65%),
-    linear-gradient(180deg, #fdfbf8 0%, var(--color-cream) 100%);
+    linear-gradient(180deg, var(--color-cream) 0%, var(--color-cream) 100%);
 }
 
 .card {
@@ -37,34 +37,32 @@ body {
 }
 
 .btn-primary {
-  @apply inline-flex items-center justify-center gap-2 rounded-full bg-sfu-red px-6 py-3 text-sm font-semibold text-white transition hover:bg-sfu-maroon focus:outline-none focus-visible:ring-2 focus-visible:ring-sfu-red focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50;
+  @apply inline-flex items-center justify-center gap-2 rounded-full bg-sfu-red px-6 py-3 text-sm font-semibold text-white transition active:scale-[0.97] hover:bg-sfu-maroon focus:outline-none focus-visible:ring-2 focus-visible:ring-sfu-red focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50;
 }
 
 .btn-secondary {
-  @apply inline-flex items-center justify-center gap-2 rounded-full border border-ink/15 bg-white px-6 py-3 text-sm font-semibold text-ink transition hover:border-ink/30 hover:bg-sand/60 focus:outline-none focus-visible:ring-2 focus-visible:ring-ink/30 focus-visible:ring-offset-2;
+  @apply inline-flex items-center justify-center gap-2 rounded-full border border-ink/15 bg-white px-6 py-3 text-sm font-semibold text-ink transition active:scale-[0.97] hover:border-ink/30 hover:bg-sand/60 focus:outline-none focus-visible:ring-2 focus-visible:ring-ink/30 focus-visible:ring-offset-2;
 }
 
 .input {
   @apply w-full rounded-xl border border-ink/15 bg-white px-4 py-3 text-sm text-ink placeholder:text-ink/35 transition focus:border-sfu-red focus:outline-none focus:ring-2 focus:ring-sfu-red/20;
 }
 
-/* Load-in: hero elements */
+/* ── Keyframes ─────────────────────────────────────────────────────────── */
+
 @keyframes fade-up {
   from {
     opacity: 0;
     transform: translateY(12px);
+    filter: blur(3px);
   }
   to {
     opacity: 1;
     transform: translateY(0);
+    filter: blur(0);
   }
 }
 
-.animate-fade-up {
-  animation: fade-up 0.5s cubic-bezier(0.16, 1, 0.3, 1) both;
-}
-
-/* Scroll-reveal: sections */
 @keyframes reveal-up {
   from {
     opacity: 0;
@@ -76,6 +74,37 @@ body {
   }
 }
 
+@keyframes ring-in {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+@keyframes path-draw {
+  to { stroke-dashoffset: 0; }
+}
+
+@keyframes icon-pop {
+  from { opacity: 0; transform: scale(0.6); }
+  to   { opacity: 1; transform: scale(1); }
+}
+
+@keyframes chip-in {
+  from { opacity: 0; transform: translateY(5px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes status-pulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(204, 6, 51, 0.45); }
+  60%       { box-shadow: 0 0 0 5px rgba(204, 6, 51, 0); }
+}
+
+/* ── Animation classes ─────────────────────────────────────────────────── */
+
+.animate-fade-up {
+  animation: fade-up 0.6s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+/* Scroll-reveal: sections (progressive enhancement — no-op in browsers without view timeline) */
 @supports (animation-timeline: view()) {
   .reveal {
     animation: reveal-up 0.6s cubic-bezier(0.16, 1, 0.3, 1) both;
@@ -84,11 +113,68 @@ body {
   }
 }
 
+/* SVG wave decoration */
+.wave-ring {
+  animation: ring-in 0.55s cubic-bezier(0.22, 1, 0.36, 1) var(--ring-delay, 0.25s) both;
+}
+
+.wave-line {
+  stroke-dasharray: 360;
+  stroke-dashoffset: 360;
+  animation: path-draw 1.1s cubic-bezier(0.22, 1, 0.36, 1) 0.5s both;
+}
+
+.wave-dot {
+  animation: ring-in 0.4s cubic-bezier(0.22, 1, 0.36, 1) 0.9s both;
+}
+
+/* Confirmation checkmark */
+.animate-icon-pop {
+  animation: icon-pop 0.45s cubic-bezier(0.22, 1, 0.36, 1) 0.1s both;
+}
+
+.check-path {
+  stroke-dasharray: 22;
+  stroke-dashoffset: 22;
+  animation: path-draw 0.5s cubic-bezier(0.22, 1, 0.36, 1) 0.35s both;
+}
+
+/* Time chip stagger */
+.animate-chip-in {
+  animation: chip-in 0.3s cubic-bezier(0.22, 1, 0.36, 1) var(--chip-delay, 0ms) both;
+}
+
+/* Live status dot */
+.animate-status-dot {
+  animation: status-pulse 2.2s ease-in-out 1.5s infinite;
+}
+
+/* ── Reduced motion ─────────────────────────────────────────────────────── */
+
 @media (prefers-reduced-motion: reduce) {
   .animate-fade-up,
-  .reveal {
+  .reveal,
+  .animate-icon-pop,
+  .animate-chip-in {
     animation: none;
     opacity: 1;
     transform: none;
+    filter: none;
+  }
+
+  .wave-ring,
+  .wave-dot {
+    animation: none;
+    opacity: 1 !important;
+  }
+
+  .wave-line,
+  .check-path {
+    animation: none;
+    stroke-dashoffset: 0 !important;
+  }
+
+  .animate-status-dot {
+    animation: none;
   }
 }
