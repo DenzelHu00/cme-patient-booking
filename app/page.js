@@ -1,29 +1,5 @@
+import Image from "next/image";
 import Link from "next/link";
-
-function WaveDecoration() {
-  return (
-    <svg
-      viewBox="0 0 480 480"
-      fill="none"
-      aria-hidden="true"
-      className="h-full w-full"
-    >
-      <g stroke="#cc0633" strokeWidth="1.5">
-        {[70, 110, 150, 190, 230].map((r, i) => (
-          <circle key={r} cx="240" cy="240" r={r} opacity={0.32 - i * 0.055} />
-        ))}
-      </g>
-      <path
-        d="M120 240h52l18-34 28 64 22-44 16 28 14-14h90"
-        stroke="#a6192e"
-        strokeWidth="3.5"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
-      <circle cx="240" cy="240" r="6" fill="#cc0633" />
-    </svg>
-  );
-}
 
 const steps = [
   {
@@ -43,7 +19,7 @@ const steps = [
 const expectations = [
   {
     title: "Completely non-invasive",
-    body: "Magnetoencephalography (MEG) passively records the magnetic fields naturally produced by your brain. Nothing enters your body — you simply sit comfortably while we record.",
+    body: "Magnetoencephalography (MEG) passively records the magnetic fields naturally produced by your brain. Nothing enters your body - you simply sit comfortably while we record.",
   },
   {
     title: "About three hours",
@@ -64,42 +40,54 @@ export default function HomePage() {
     <>
       {/* Hero */}
       <section className="hero-glow relative overflow-hidden">
-        <div className="pointer-events-none absolute -right-24 top-1/2 hidden h-[520px] w-[520px] -translate-y-1/2 lg:block">
-          <WaveDecoration />
-        </div>
         <div className="mx-auto w-full max-w-6xl px-5 py-20 sm:py-28">
-          <div className="max-w-2xl">
-            <p className="animate-fade-up mb-5 inline-flex items-center gap-2 rounded-full border border-sfu-red/20 bg-white px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.14em] text-sfu-maroon">
-              <span className="h-1.5 w-1.5 rounded-full bg-sfu-red" />
-              Now enrolling participants
-            </p>
-            <h1 className="font-display animate-fade-up text-4xl font-semibold leading-[1.08] text-ink [animation-delay:60ms] sm:text-6xl">
-              Your brain, beautifully mapped.
-            </h1>
-            <p className="animate-fade-up mt-6 max-w-xl text-lg leading-relaxed text-ink/70 [animation-delay:120ms]">
-              Welcome to the patient portal for the{" "}
-              <strong className="font-semibold text-ink">
-                Clinical Magnetoencephalography for Epilepsy (CME)
-              </strong>{" "}
-              study at SFU&rsquo;s Centre for Advanced Imaging. Book your
-              research appointment in under two minutes.
-            </p>
-            <div className="animate-fade-up mt-9 flex flex-wrap items-center gap-3 [animation-delay:180ms]">
-              <Link href="/book" className="btn-primary">
-                Book an Appointment
-                <svg viewBox="0 0 16 16" fill="none" className="h-4 w-4" aria-hidden="true">
-                  <path
-                    d="M3 8h10m0 0L9 4m4 4-4 4"
-                    stroke="currentColor"
-                    strokeWidth="1.8"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  />
-                </svg>
-              </Link>
-              <Link href="#study" className="btn-secondary">
-                Learn about the study
-              </Link>
+          <div className="grid items-center gap-12 lg:grid-cols-[1fr_400px]">
+            <div>
+              <p className="animate-fade-up mb-5 inline-flex items-center rounded-full border border-sfu-red/20 bg-white px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.14em] text-sfu-maroon">
+                Now enrolling participants
+              </p>
+              <h1 className="font-display animate-fade-up text-4xl font-semibold leading-[1.1] text-ink [animation-delay:60ms] sm:text-5xl lg:text-6xl">
+                Your brain,<br className="hidden sm:block" /> beautifully mapped.
+              </h1>
+              <p className="animate-fade-up mt-6 max-w-xl text-lg leading-relaxed text-ink/70 [animation-delay:120ms]">
+                Welcome to the patient portal for the{" "}
+                <strong className="font-semibold text-ink">
+                  Clinical Magnetoencephalography for Epilepsy (CME)
+                </strong>{" "}
+                study at SFU&rsquo;s Centre for Advanced Imaging. Book your
+                research appointment in under two minutes.
+              </p>
+              <div className="animate-fade-up mt-9 flex flex-wrap items-center gap-3 [animation-delay:180ms]">
+                <Link href="/book" className="btn-primary">
+                  Book an Appointment
+                  <svg viewBox="0 0 16 16" fill="none" className="h-4 w-4" aria-hidden="true">
+                    <path
+                      d="M3 8h10m0 0L9 4m4 4-4 4"
+                      stroke="currentColor"
+                      strokeWidth="1.8"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    />
+                  </svg>
+                </Link>
+                <Link href="#study" className="btn-secondary">
+                  Learn about the study
+                </Link>
+              </div>
+            </div>
+
+            <div className="animate-fade-up hidden [animation-delay:240ms] lg:block">
+              <div className="relative overflow-hidden rounded-2xl shadow-[0_2px_4px_rgba(33,28,29,0.06),0_20px_60px_-20px_rgba(33,28,29,0.18)]">
+                <Image
+                  src="https://picsum.photos/seed/cai-mri-burnaby/800/960"
+                  alt="Researcher at the SFU Centre for Advanced Imaging"
+                  width={800}
+                  height={960}
+                  priority
+                  className="h-[480px] w-full object-cover"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-sfu-dark/30 via-transparent to-transparent" />
+              </div>
             </div>
           </div>
         </div>
@@ -108,17 +96,14 @@ export default function HomePage() {
       {/* Study overview */}
       <section id="study" className="mx-auto w-full max-w-6xl px-5 py-20">
         <div className="grid items-start gap-10 lg:grid-cols-[1.1fr_1fr]">
-          <div>
-            <p className="text-xs font-semibold uppercase tracking-[0.18em] text-sfu-red">
-              Current Research Study
-            </p>
-            <h2 className="font-display mt-3 text-3xl font-semibold text-ink sm:text-4xl">
+          <div className="reveal">
+            <h2 className="font-display text-3xl font-semibold text-ink sm:text-4xl">
               Clinical Magnetoencephalography for Epilepsy
             </h2>
             <p className="mt-5 leading-relaxed text-ink/70">
-              The CME project investigates how magnetoencephalography — a
+              The CME project investigates how magnetoencephalography - a
               powerful, silent, and completely non-invasive brain imaging
-              technique — can help clinicians localize epileptic activity with
+              technique - can help clinicians localize epileptic activity with
               millimetre precision. By participating, you contribute directly
               to research that aims to improve surgical planning and treatment
               outcomes for people living with epilepsy.
@@ -140,7 +125,7 @@ export default function HomePage() {
             </div>
           </div>
 
-          <div className="card p-8">
+          <div className="card reveal p-8">
             <h3 className="font-display text-xl font-semibold text-ink">
               How booking works
             </h3>
@@ -169,7 +154,7 @@ export default function HomePage() {
       {/* What to expect */}
       <section id="expect" className="border-t border-sand bg-white">
         <div className="mx-auto w-full max-w-6xl px-5 py-20">
-          <div className="max-w-2xl">
+          <div className="reveal max-w-2xl">
             <p className="text-xs font-semibold uppercase tracking-[0.18em] text-sfu-red">
               Preparing for your visit
             </p>
@@ -178,8 +163,12 @@ export default function HomePage() {
             </h2>
           </div>
           <div className="mt-12 grid gap-6 sm:grid-cols-2">
-            {expectations.map((item) => (
-              <div key={item.title} className="rounded-2xl bg-cream p-7">
+            {expectations.map((item, i) => (
+              <div
+                key={item.title}
+                className="reveal rounded-2xl bg-cream p-7 transition hover:shadow-[0_4px_20px_-8px_rgba(33,28,29,0.12)]"
+                style={{ animationDelay: `${i * 60}ms` }}
+              >
                 <h3 className="font-semibold text-ink">{item.title}</h3>
                 <p className="mt-2 text-sm leading-relaxed text-ink/65">
                   {item.body}
@@ -199,7 +188,7 @@ export default function HomePage() {
             </h2>
             <p className="mt-2 max-w-xl text-sm leading-relaxed text-white/70">
               Appointment dates are released by our research coordinators. If
-              nothing suits your schedule, check back soon — new dates are
+              nothing suits your schedule, check back soon - new dates are
               added regularly.
             </p>
           </div>

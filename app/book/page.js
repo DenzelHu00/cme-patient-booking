@@ -276,10 +276,7 @@ export default function BookPage() {
       ) : (
         <>
           <div className="max-w-2xl">
-            <p className="text-xs font-semibold uppercase tracking-[0.18em] text-sfu-red">
-              CME Study · Patient Portal
-            </p>
-            <h1 className="font-display mt-3 text-3xl font-semibold text-ink sm:text-4xl">
+            <h1 className="font-display text-3xl font-semibold text-ink sm:text-4xl">
               Book your appointment
             </h1>
             <p className="mt-3 leading-relaxed text-ink/65">
@@ -314,8 +311,7 @@ export default function BookPage() {
                   />
                   {slotsByDate.size === 0 && !loadError && (
                     <div className="mt-6 rounded-xl bg-sand/70 px-5 py-4 text-sm leading-relaxed text-ink/60">
-                      No appointment dates are open right now. Our coordinators
-                      release new dates regularly — please check back soon.
+                      No appointment dates are open right now. Our coordinators release new dates regularly, so please check back soon.
                     </div>
                   )}
                 </>
@@ -341,7 +337,7 @@ export default function BookPage() {
               ) : (
                 <div className="animate-fade-up" key={selectedDate}>
                   <p className="text-xs font-semibold uppercase tracking-[0.14em] text-sfu-red">
-                    Step 2 · Choose a time
+                    Choose a time
                   </p>
                   <h2 className="font-display mt-2 text-xl font-semibold text-ink">
                     {formatLongDate(selectedDate)}
@@ -373,7 +369,7 @@ export default function BookPage() {
                   {selectedSlot && (
                     <form onSubmit={submit} className="animate-fade-up mt-8 border-t border-sand pt-7">
                       <p className="text-xs font-semibold uppercase tracking-[0.14em] text-sfu-red">
-                        Step 3 · Your details
+                        Your details
                       </p>
                       <div className="mt-4 grid gap-4">
                         <div>
