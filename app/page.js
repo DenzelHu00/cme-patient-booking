@@ -77,7 +77,7 @@ export default function HomePage() {
               </div>
             </div>
 
-            <div className="animate-fade-up hidden [animation-delay:240ms] lg:block">
+            <div className="animate-fade-up [animation-delay:240ms]">
               <div className="relative overflow-hidden rounded-2xl shadow-[0_2px_4px_rgba(33,28,29,0.06),0_20px_60px_-20px_rgba(33,28,29,0.18)]">
                 <Image
                   src="/meg-photo-3.webp"
