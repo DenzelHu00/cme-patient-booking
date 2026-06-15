@@ -80,14 +80,20 @@ export default function HomePage() {
             <div className="animate-fade-up hidden [animation-delay:240ms] lg:block">
               <div className="relative overflow-hidden rounded-2xl shadow-[0_2px_4px_rgba(33,28,29,0.06),0_20px_60px_-20px_rgba(33,28,29,0.18)]">
                 <Image
-                  src="https://picsum.photos/seed/cai-mri-burnaby/800/960"
-                  alt="Researcher at the SFU Centre for Advanced Imaging"
-                  width={800}
-                  height={960}
+                  src="/meg-photo-3.webp"
+                  alt="Patient undergoing MEG scan at SFU Centre for Advanced Imaging"
+                  width={1100}
+                  height={800}
                   priority
-                  className="h-[480px] w-full object-cover"
+                  className="h-[380px] w-full object-cover object-center"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-sfu-dark/30 via-transparent to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent" />
+                <div className="absolute bottom-4 left-4 flex items-center gap-2 rounded-full bg-white/85 px-3.5 py-1.5 backdrop-blur-sm">
+                  <span className="h-1.5 w-1.5 rounded-full bg-sfu-red" />
+                  <span className="text-[11px] font-semibold tracking-[0.06em] text-ink">
+                    Surrey Memorial Hospital · SCAI
+                  </span>
+                </div>
               </div>
             </div>
           </div>
@@ -164,8 +170,11 @@ export default function HomePage() {
             {expectations.map((item, i) => (
               <div
                 key={item.title}
-                className="reveal rounded-2xl bg-cream p-7 transition hover:shadow-[0_4px_20px_-8px_rgba(33,28,29,0.12)]"
-                style={{ animationDelay: `${i * 60}ms` }}
+                className="reveal rounded-2xl bg-cream p-7 hover:-translate-y-0.5 hover:shadow-[0_6px_24px_-8px_rgba(33,28,29,0.16)]"
+                style={{
+                  animationDelay: `${i * 60}ms`,
+                  transition: "box-shadow 200ms ease, transform 200ms cubic-bezier(0.23, 1, 0.32, 1)",
+                }}
               >
                 <h3 className="font-semibold text-ink">{item.title}</h3>
                 <p className="mt-2 text-sm leading-relaxed text-ink/65">
@@ -192,7 +201,8 @@ export default function HomePage() {
           </div>
           <Link
             href="/book"
-            className="shrink-0 rounded-full bg-white px-7 py-3.5 text-sm font-semibold text-sfu-dark transition hover:bg-cream"
+            className="shrink-0 rounded-full bg-white px-7 py-3.5 text-sm font-semibold text-sfu-dark hover:bg-cream active:scale-[0.97]"
+            style={{ transition: "background-color 150ms ease, transform 100ms cubic-bezier(0.23, 1, 0.32, 1)" }}
           >
             Book an Appointment
           </Link>

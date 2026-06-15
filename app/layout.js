@@ -1,6 +1,7 @@
 import { Outfit } from "next/font/google";
 import "./globals.css";
 import Link from "next/link";
+import Image from "next/image";
 
 const outfit = Outfit({
   subsets: ["latin"],
@@ -18,23 +19,8 @@ export const metadata = {
 function Wordmark() {
   return (
     <Link href="/" className="group flex items-center gap-3">
-      <span className="flex h-10 w-10 items-center justify-center rounded-xl bg-sfu-red text-white shadow-sm transition group-hover:bg-sfu-maroon">
-        <svg viewBox="0 0 24 24" fill="none" className="h-6 w-6" aria-hidden="true">
-          <path
-            d="M12 3.5c-3.6 0-6.5 2.7-6.5 6.2 0 2.1 1 3.6 2.2 4.8.7.7 1 1.6 1 2.5v.5h6.6v-.5c0-.9.3-1.8 1-2.5 1.2-1.2 2.2-2.7 2.2-4.8 0-3.5-2.9-6.2-6.5-6.2Z"
-            stroke="currentColor"
-            strokeWidth="1.6"
-            strokeLinejoin="round"
-          />
-          <path
-            d="M8.5 10.5h1.6l1-1.8 1.6 3.4 1-1.6h1.8"
-            stroke="currentColor"
-            strokeWidth="1.4"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-          />
-          <path d="M9.5 20.5h5" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" />
-        </svg>
+      <span className="flex h-10 w-10 overflow-hidden rounded-xl shadow-sm transition group-hover:opacity-85">
+        <Image src="/scai-logo.png" alt="" width={40} height={40} className="h-10 w-10 object-cover" aria-hidden="true" />
       </span>
       <span className="leading-tight">
         <span className="block text-[11px] font-semibold uppercase tracking-[0.18em] text-sfu-red">
